@@ -7,9 +7,14 @@
 }
 
 .body-row{
-    @apply border-y border-y-lime-900 *:pr-1 *:font-sans *:text-center
+    @apply border-y border-y-lime-900 *:pr-1 *:font-sans *:text-center hover:bg-slate-600
+}
+
+.show-more{
+    @apply text-white text-sm bg-slate-900 px-1 my-1 rounded active:bg-slate-950 active:border active:border-white
 }
 
 .table{
     @apply table-fixed border-collapse border border-transparent 
 }
+

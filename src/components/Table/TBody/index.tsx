@@ -1,5 +1,6 @@
-import { FC , useState } from "react";
+import { FC, useState } from "react";
 import BodyRow from "./BodyRow";
+import "../index.css"
 
 
 interface iData {
@@ -23,14 +24,14 @@ const TBody: FC<iTBodyProps> = ({ data, setModalInfo, removeExpand }) => {
     const [addExpand, setAddExpand] = useState(true)
 
     if (Array.isArray(data)) {
-        rowList = data.map((rowData, i) => <BodyRow setModalInfo={setModalInfo} key={i} rowData={rowData} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} />)
+        rowList = data.map((rowData, i) => <BodyRow setModalInfo={setModalInfo} key={i} rowData={rowData} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} style={i % 2 == 0 ? "body-row":"body-row bg-slate-300"} />)
     } else {
-        rowList = <BodyRow setModalInfo={setModalInfo} rowData={data} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} />
+        rowList = <BodyRow setModalInfo={setModalInfo} rowData={data} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} style="body-row"/>
     }
 
 
     return (
-        <tbody>
+        <tbody className="tbody">
             {rowList}
         </tbody>
     )

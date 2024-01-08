@@ -17,10 +17,11 @@ interface iBodyRowProps {
     setModalInfo: (info: iCellData | string) => void
     setAddExpand: (val: boolean) => void
     removeExpand: () => void
+    style: string
 }
 
 
-const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeExpand, setAddExpand }) => {
+const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeExpand, setAddExpand, style }) => {
 
 
 
@@ -64,7 +65,7 @@ const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeEx
 
     return (
         <>
-            <tr className="body-row">
+            <tr className={style}>
                 {addExpand ? <Expand canExpand={canExpand} setCanExpand={setCanExpand} /> : <></>}
                 {cellsList}
             </tr>
