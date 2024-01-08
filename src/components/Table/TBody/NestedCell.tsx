@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Table from "..";
+import "../index.css"
 
 
 
@@ -15,8 +16,6 @@ interface iNestedCellProps {
 const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
 
     function createCell(cellData: iCellData) {
-
-
 
         if (!cellData){
             return "NONE"
@@ -43,14 +42,14 @@ const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
         })
 
         return (
-            <table>
+            <table className="table">
                 <thead>
-                    <tr>
+                    <tr className="head-row ">
                         {headersList}
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr className="body-row *:border-x">
                         {cellsList}
                     </tr>
                 </tbody>
@@ -59,7 +58,7 @@ const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
     }
 
     return (
-        <div className="nested">
+        <div className="text-center font-sans text-sm">
             {(typeof cell !== "object") ? cell : createCell(cell)}
         </div>
     )

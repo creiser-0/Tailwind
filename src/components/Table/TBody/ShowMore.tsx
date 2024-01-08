@@ -25,10 +25,12 @@ const ShowMore: FC<iShowMoreProps> = ({ setModalInfo, data }) => {
     }
 
 
-    return <div className="showmore-div">
-        {notEmpty ? <button className="showmore-button"
-            onClick={() => setModalInfo(data)}>Show More</button>
-            : <strong className="nothing">-</strong>}
+    return <div className="flex justify-center *:font-sans h-10">
+        {notEmpty ?
+            <button className="text-white text-sm bg-slate-900 px-1 my-1 rounded active:bg-slate-950 active:border active:border-white"
+                onClick={() => setModalInfo(data)}>Show More
+            </button>
+            : <strong className="text-2xl">-</strong>}
     </div>
 }
 

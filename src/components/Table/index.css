@@ -1,0 +1,15 @@
+.extra-row-caption{
+    @apply text-lime-700 font-sans text-xl first-letter:uppercase
+}
+
+.head-row{
+   @apply border-b-2 border-b-lime-600 *:font-sans *:first-letter:uppercase *:text-lime-500
+}
+
+.body-row{
+    @apply border-y border-y-lime-900 *:pr-1 *:font-sans *:text-center
+}
+
+.table{
+    @apply table-fixed border-collapse border border-transparent 
+}

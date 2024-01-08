@@ -1,4 +1,5 @@
 import { FC, useRef } from "react";
+import "./Select.css"
 
 interface iSelectProps {
     changeData: (url: string) => void
@@ -18,16 +19,16 @@ const Select: FC<iSelectProps> = ({ changeData, setIsSelected }) => {
     }
 
     return (
-        <div className="bg-green-400 flex flex-col items-center">
-            <label htmlFor="selectedApi" className="text-2xl font-bold font-sans mt-2">
+        <div className="select-div">
+            <label htmlFor="selectedApi" className="label">
                 Please Select an API
             </label>
-            <input className="m-2 font-sans rounded" type="url" placeholder={"https://jsonplaceholder.typicode.com/users"} id={"selectedApi"} ref={selectRef} onKeyUp={(e) => {
+            <input className="input-api" type="url" placeholder={"https://jsonplaceholder.typicode.com/users"} id={"selectedApi"} ref={selectRef} onKeyUp={(e) => {
                 if (e.key === "Enter") {
                     clickHandler()
                 }
             }} />
-            <button className="bg-emerald-700 cursor-pointer font-sans hover:bg-emerald-800 border active:bg-emerald-900 border-black pl-1 pr-1  mb-2" onClick={clickHandler}>
+            <button className="select-button" onClick={clickHandler}>
                 Accept
             </button>
         </div>

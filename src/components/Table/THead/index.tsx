@@ -1,4 +1,5 @@
 import { FC } from "react";
+import "../index.css"
 
 interface iTHeadProps {
     keys: string[]
@@ -7,8 +8,8 @@ interface iTHeadProps {
 
 const THead: FC<iTHeadProps> = ({ keys, addExpand }) => (
     <thead>
-        <tr>
-            {addExpand ? <th className="expand"> </th> : <></>}
+        <tr className="head-row">
+            {addExpand ? <th> </th> : <></>}
             {keys.map((key) => {
                 return (
                     <th key={key}>{key}</th>

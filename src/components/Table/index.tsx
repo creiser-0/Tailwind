@@ -15,7 +15,7 @@ const Table: FC<iTableProps> = ({ data, setModalInfo }) => {
 
     const [addExpand, setAddExpand] = useState(true)
 
-    function removeExpand(){
+    function removeExpand() {
         setAddExpand(false)
     }
 
@@ -24,12 +24,12 @@ const Table: FC<iTableProps> = ({ data, setModalInfo }) => {
     if (Array.isArray(data)) {
         keys = Object.keys(data ? data[0] : ["NONE"])
     } else {
-        keys = Object.keys(data? data: ["NONE"])
+        keys = Object.keys(data ? data : ["NONE"])
     }
     return (
-        <div className="table-div">
+        <div className="flex justify-center mt-4 w-4/5">
             {data && (
-                <table className="table-fixed">
+                <table className="table">
                     <THead keys={keys} addExpand={addExpand}></THead>
                     <TBody setModalInfo={setModalInfo} data={data} removeExpand={removeExpand}></TBody>
                 </table>
