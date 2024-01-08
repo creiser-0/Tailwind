@@ -14,7 +14,7 @@ const Expand: FC<iExpandProps> = ({ canExpand, setCanExpand }) => {
     }
 
     return (
-        <td onClick={clickHandler} className="w-5 border-x" >
+        <td onClick={clickHandler} className="w-6 border-x" >
             <div className="image-div">
                 <img className={canExpand ? "p-1" : "rotate-180 p-1"}
                     src="https://cdn-icons-png.flaticon.com/512/60/60781.png"

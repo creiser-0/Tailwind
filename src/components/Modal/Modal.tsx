@@ -1,5 +1,6 @@
 import { FC } from "react";
 import NestedCell from "../Table/TBody/NestedCell";
+import "./Modal.css"
 
 
 interface iModalProps {
