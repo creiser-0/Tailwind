@@ -29,7 +29,7 @@ const Table: FC<iTableProps> = ({ data, setModalInfo }) => {
     return (
         <div className="table-div">
             {data && (
-                <table>
+                <table className="table-fixed">
                     <THead keys={keys} addExpand={addExpand}></THead>
                     <TBody setModalInfo={setModalInfo} data={data} removeExpand={removeExpand}></TBody>
                 </table>
