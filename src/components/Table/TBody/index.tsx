@@ -52,6 +52,7 @@ const TBody: FC<iTBodyProps> = ({ data, setModalInfo, removeExpand, filterHeader
     if (Array.isArray(data)) {
         const rowListNotSorted = data.map((rowData, i) => <BodyRow setModalInfo={setModalInfo} key={i} rowData={rowData} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} style={i % 2 == 0 ? "body-row" : "body-row bg-slate-300"} />)
         rowList = filter(rowListNotSorted, filterHeader, filterOrder)
+
     } else {
         rowList = <BodyRow setModalInfo={setModalInfo} rowData={data} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} style="body-row" />
     }

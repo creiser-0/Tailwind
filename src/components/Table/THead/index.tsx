@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import "../index.css"
 import Header from "./HeaderTable";
 
@@ -10,10 +10,11 @@ interface iTHeadProps {
 
 const THead: FC<iTHeadProps> = ({ keys, addExpand, changeFilter }) => {
 
+    const currentHeader = useRef("")
 
     const headerList = keys.map((key, i) => {
         return (
-            <Header key={key} header={key} changeFilter={changeFilter} />
+            <Header key={key} header={key} changeFilter={changeFilter} currentHeader={currentHeader}/>
         )
     })
 

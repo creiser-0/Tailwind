@@ -46,7 +46,6 @@ const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeEx
             }
         })
         if (extraRowData.current.every((x) => x === 0)) {
-            /* if (extraRowData.current.length === 1) */
             removeExpand()
             setAddExpand(false)
         }
