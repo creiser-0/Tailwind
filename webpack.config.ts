@@ -28,6 +28,10 @@ const config: iConfiguration = {
                 include: path.resolve(__dirname, 'src'),
                 use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
+            {
+                test: /\.(png|jpg)$/,
+                type: 'asset/resource',
+            },
         ],
     },
     resolve: {
@@ -36,10 +40,12 @@ const config: iConfiguration = {
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "./dist"),
+        assetModuleFilename: 'assets/[name][ext]',
     },
     plugins: [
         new CopyWebpackPlugin({
-            patterns: [{ from: "public" }],
+            patterns: [{ from: "public" },
+            ]
         }),
     ],
     devServer: {

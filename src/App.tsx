@@ -2,6 +2,7 @@ import { useState } from "react";
 import Table from "./components/Table";
 import Modal from "./components/Modal/Modal";
 import Select from "./components/Select/Select";
+
 import "./style.css"
 
 export default function App() {

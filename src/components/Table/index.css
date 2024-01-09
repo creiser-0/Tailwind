@@ -3,7 +3,7 @@
 }
 
 .head-row{
-   @apply border-b-2 border-b-lime-600 *:font-sans *:first-letter:uppercase *:text-lime-500
+   @apply border-b-2 border-b-lime-600 *:font-sans *:first-letter:uppercase *:text-lime-500 *:relative *:cursor-pointer
 }
 
 .body-row{
@@ -16,5 +16,9 @@
 
 .table{
     @apply table-fixed border-collapse border border-transparent 
+}
+
+.filter-image{
+    @apply absolute bottom-0 right-0 w-3 opacity-50
 }
 

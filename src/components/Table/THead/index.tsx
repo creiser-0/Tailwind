@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import "../index.css"
+import Header from "./HeaderTable";
 
 interface iTHeadProps {
     keys: string[]
@@ -10,14 +11,9 @@ interface iTHeadProps {
 const THead: FC<iTHeadProps> = ({ keys, addExpand, changeFilter }) => {
 
 
-    const headerList = keys.map((key) => {
+    const headerList = keys.map((key, i) => {
         return (
-            <th key={key}>
-                {key}
-                <button onClick={()=>changeFilter(key, 1)}>A</button>
-                <button onClick={()=>changeFilter(key, 2)}>D</button>
-                <button onClick={()=>changeFilter(key, 0)}>N</button>
-            </th>
+            <Header key={key} header={key} changeFilter={changeFilter} />
         )
     })
 
