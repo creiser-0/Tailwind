@@ -19,6 +19,6 @@
 }
 
 .filter-image{
-    @apply absolute bottom-0 right-0 w-3 opacity-50
+    @apply relative bottom-0 left-2 w-3 opacity-50
 }
 

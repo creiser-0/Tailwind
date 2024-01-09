@@ -1,10 +1,8 @@
 import { FC } from "react";
+import { iExpandProps } from "../../../custom_typings/interfaces/table.interfaces";
 
 
-interface iExpandProps {
-    canExpand: boolean
-    setCanExpand: (val: boolean) => void
-}
+
 
 const Expand: FC<iExpandProps> = ({ canExpand, setCanExpand }) => {
 

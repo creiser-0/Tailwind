@@ -27,7 +27,7 @@ const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeEx
 
     const [canExpand, setCanExpand] = useState(true)
 
-    const isObject = (x: {}): boolean => {
+    const isObject = (x: any): boolean => {
         return (typeof (x) === "object")
     }
 

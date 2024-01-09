@@ -1,15 +1,9 @@
+import { iTableProps } from "../../custom_typings/interfaces/table.interfaces";
 import { FC, useState } from "react";
 import TBody from "./TBody";
 import THead from "./THead";
 
-interface iCellData {
-    [key: string]: iCellData
-}
 
-interface iTableProps {
-    data: any[] | undefined | object
-    setModalInfo: (info: iCellData | string) => void
-}
 
 const Table: FC<iTableProps> = ({ data, setModalInfo }) => {
 

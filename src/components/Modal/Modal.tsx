@@ -1,12 +1,9 @@
+import { iModalProps } from "../../custom_typings/interfaces/props.interfaces";
 import { FC } from "react";
 import NestedCell from "../Table/TBody/NestedCell";
 import "./Modal.css"
 
 
-interface iModalProps {
-    modalInfo: any
-    setShowModal: (val: boolean) => void
-}
 
 const Modal: FC<iModalProps> = ({ modalInfo, setShowModal }) => {
 

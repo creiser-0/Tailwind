@@ -1,10 +1,8 @@
+import { iSelectProps } from "../../custom_typings/interfaces/props.interfaces";
 import { FC, useRef } from "react";
 import "./Select.css"
 
-interface iSelectProps {
-    changeData: (url: string) => void
-    setIsSelected: (val: boolean) => void
-}
+
 
 const Select: FC<iSelectProps> = ({ changeData, setIsSelected }) => {
 

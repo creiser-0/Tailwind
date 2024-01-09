@@ -1,12 +1,9 @@
-import { FC, useRef, useState } from "react";
-import "../index.css"
+import { FC, useRef } from "react";
+import { iTHeadProps } from "../../../custom_typings/interfaces/table.interfaces";
 import Header from "./HeaderTable";
+import "../index.css"
 
-interface iTHeadProps {
-    keys: string[]
-    addExpand: boolean
-    changeFilter: (header: string, sortOrder: number) => void
-}
+
 
 const THead: FC<iTHeadProps> = ({ keys, addExpand, changeFilter }) => {
 

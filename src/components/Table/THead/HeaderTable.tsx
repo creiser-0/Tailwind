@@ -1,14 +1,9 @@
-import { FC, MutableRefObject, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { iHeaderTable } from "../../../custom_typings/interfaces/table.interfaces";
 import slash from "../../../assets/slash.png"
 import ascending from "../../../assets/ascending.png"
 import descending from "../../../assets/descending.png"
 
-
-interface iHeaderTable {
-    header: string
-    changeFilter: (header: string, sortOrder: number) => void
-    currentHeader:MutableRefObject<string>
-}
 
 const Header: FC<iHeaderTable> = ({ header, changeFilter, currentHeader}) => {
     

@@ -1,17 +1,9 @@
+import { iNestedCellProps, iCellData } from "../../../custom_typings/interfaces/table.interfaces";
 import { FC } from "react";
 import Table from "..";
 import "../index.css"
 
 
-
-interface iCellData {
-    [key: string]: iCellData
-}
-
-interface iNestedCellProps {
-    cell: iCellData | string
-    setModalInfo: (info: iCellData | string) => void
-}
 
 const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
 

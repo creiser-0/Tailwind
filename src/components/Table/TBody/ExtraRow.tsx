@@ -1,19 +1,11 @@
 import { FC } from "react"
+import { iExtraRowProps } from "../../../custom_typings/interfaces/table.interfaces"
 import NestedCell from "./NestedCell"
-
-interface iCellData {
-    [key: string]: iCellData
-}
-
-interface iExtraRowProps {
-    data: any[]
-    setModalInfo: (info: iCellData | string) => void
-}
 
 
 const ExtraRow: FC<iExtraRowProps> = ({ data, setModalInfo }) => {
 
-    const cellList = data.map((cellData: any, i) => {
+    const cellList = data.map((cellData, i) => {
         return (
             <div key={i} className="flex flex-col items-center">
                 {(cellData !== 0) &&

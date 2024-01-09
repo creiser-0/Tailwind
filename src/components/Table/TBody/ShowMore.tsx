@@ -1,15 +1,8 @@
+import { iShowMoreProps } from "../../../custom_typings/interfaces/table.interfaces";
 import { FC } from "react";
 import "../index.css"
 
-interface iCellData {
-    [key: string]: iCellData
-}
 
-
-interface iShowMoreProps {
-    setModalInfo: (info: iCellData | string) => void
-    data: iCellData | string
-}
 
 const ShowMore: FC<iShowMoreProps> = ({ setModalInfo, data }) => {
 
