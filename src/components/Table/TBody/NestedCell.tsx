@@ -34,9 +34,9 @@ const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
         })
 
         return (
-            <table className="table">
+            <table className="table w-full">
                 <thead>
-                    <tr className="head-row ">
+                    <tr className="head-row *:first-letter:uppercase">
                         {headersList}
                     </tr>
                 </thead>
@@ -50,7 +50,7 @@ const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
     }
 
     return (
-        <div className="text-center font-sans text-sm">
+        <div className="nested-cell">
             {(typeof cell !== "object") ? cell : createCell(cell)}
         </div>
     )

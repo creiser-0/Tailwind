@@ -7,7 +7,7 @@ const ExtraRow: FC<iExtraRowProps> = ({ data, setModalInfo }) => {
 
     const cellList = data.map((cellData, i) => {
         return (
-            <div key={i} className="flex flex-col items-center">
+            <div key={i} className="flex flex-col items-center mr-3">
                 {(cellData !== 0) &&
                     <>
                         <p className="extra-row-caption">{cellData.key}</p>

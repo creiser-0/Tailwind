@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, useState } from "react";
 import { iTBodyProps, iData } from "../../../custom_typings/interfaces/table.interfaces";
 import BodyRow from "./BodyRow";
 import "../index.css"
@@ -9,7 +9,7 @@ import "../index.css"
 const TBody: FC<iTBodyProps> = ({ data, setModalInfo, removeExpand, filterHeader, filterOrder }) => {
 
     function filter(data: iData[], header: string, filterOrder: number) {
-        const dataCopy = data
+        const dataCopy = [...data]
         if (filterOrder === 1) {
             switch (typeof dataCopy[0][header]) {
                 case "string":
@@ -25,9 +25,9 @@ const TBody: FC<iTBodyProps> = ({ data, setModalInfo, removeExpand, filterHeader
                 case "number":
                     return dataCopy.sort((a, b) => b[header] - a[header])
             }
-
         }
         return dataCopy
+
     }
 
     let rowList;
@@ -36,17 +36,14 @@ const TBody: FC<iTBodyProps> = ({ data, setModalInfo, removeExpand, filterHeader
 
     if (Array.isArray(data)) {
         const dataSorted = filter(data, filterHeader, filterOrder)
-        rowList = dataSorted.map((rowData, i) => <BodyRow setModalInfo={setModalInfo} key={i} rowData={rowData} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} style={i % 2 == 0 ? "body-row" : "body-row bg-slate-300"} />)
+        rowList = dataSorted.map((rowData, i) => <BodyRow setModalInfo={setModalInfo} key={i} rowData={rowData} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} style={i % 2 == 0 ? "body-row" : "body-row bg-slate-200"} />)
 
     } else {
         rowList = <BodyRow setModalInfo={setModalInfo} rowData={data} addExpand={addExpand} setAddExpand={setAddExpand} removeExpand={removeExpand} style="body-row" />
     }
 
-    const tbody = useRef(null)
-
-
     return (
-        <tbody className="tbody" ref={tbody}>
+        <tbody className="tbody">
             {rowList}
         </tbody>
     )

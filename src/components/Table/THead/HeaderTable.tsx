@@ -3,17 +3,18 @@ import { iHeaderTable } from "../../../custom_typings/interfaces/table.interface
 import slash from "../../../assets/slash.png"
 import ascending from "../../../assets/ascending.png"
 import descending from "../../../assets/descending.png"
+import  "../index.css"
 
 
-const Header: FC<iHeaderTable> = ({ header, changeFilter, currentHeader}) => {
-    
+const Header: FC<iHeaderTable> = ({ header, changeFilter, currentHeader }) => {
+
 
     const [sortOrder, setSortOrder] = useState(0)
 
     const [img, setImage] = useState(slash)
 
-    useEffect(()=>{
-        if (currentHeader.current !== header){
+    useEffect(() => {
+        if (currentHeader.current !== header) {
             setSortOrder(0)
             setImage(slash)
         }
@@ -30,7 +31,7 @@ const Header: FC<iHeaderTable> = ({ header, changeFilter, currentHeader}) => {
     }, [sortOrder])
 
     function nextSort() {
-        if (sortOrder === 2 ) {
+        if (sortOrder === 2) {
             currentHeader.current = ""
             setSortOrder(0)
             return 0
@@ -45,8 +46,10 @@ const Header: FC<iHeaderTable> = ({ header, changeFilter, currentHeader}) => {
         <th onClick={() => {
             changeFilter(header, nextSort())
         }}>
-            {header}
-            {<img className="filter-image" src={img} />}
+            <div className="header">
+                <strong>{header}</strong>
+                {<img className="filter-image" src={img} />}
+            </div>
         </th>
     )
 }

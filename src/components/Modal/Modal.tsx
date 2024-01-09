@@ -5,7 +5,7 @@ import "./Modal.css"
 
 
 
-const Modal: FC<iModalProps> = ({ modalInfo, setShowModal }) => {
+const Modal: FC<iModalProps> = ({ modalInfo, setShowModal, setModalInfo }) => {
 
     function clickHandler() {
         setShowModal(false)
@@ -16,7 +16,7 @@ const Modal: FC<iModalProps> = ({ modalInfo, setShowModal }) => {
             <div className="modal-content" onClick={(e)=>e.stopPropagation()}>
                 <button className="close-button"
                     onClick={clickHandler}>x</button>
-                {modalInfo && <NestedCell setModalInfo={() => { }} cell={modalInfo} />}
+                {modalInfo && <NestedCell setModalInfo={setModalInfo} cell={modalInfo} />}
             </div>
         </div>
     )

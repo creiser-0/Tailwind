@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    @apply bg-neutral-900
+}
+
 .main{
-    @apply flex flex-col items-center justify-center
+    @apply flex flex-col items-center justify-center 
 }

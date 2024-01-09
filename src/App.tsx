@@ -33,7 +33,7 @@ export default function App() {
             {isSelected && <Table setModalInfo={setModalInfo} data={apiData}></Table>}
             {/* <Table setModalInfo={setModalInfo} data={apiData}></Table> */}
             {showModal && <Modal setShowModal={setShowModal}
-                modalInfo={info} />}
+                modalInfo={info} setModalInfo={setModalInfo} />}
         </main>
     );
 }
