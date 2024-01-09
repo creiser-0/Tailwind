@@ -1,22 +1,22 @@
+import { iTableProps } from "../../custom_typings/interfaces/table.interfaces";
 import { FC, useState } from "react";
 import TBody from "./TBody";
 import THead from "./THead";
 
-interface iCellData {
-    [key: string]: iCellData
-}
 
-interface iTableProps {
-    data: any[] | undefined | object
-    setModalInfo: (info: iCellData | string) => void
-}
 
 const Table: FC<iTableProps> = ({ data, setModalInfo }) => {
 
     const [addExpand, setAddExpand] = useState(true)
 
-    function removeExpand(){
+    function removeExpand() {
         setAddExpand(false)
+    }
+
+    const [filter, setFilter] = useState<[string, number]>(["noFilter", 3]) 
+
+    function changeFilter(header:string, sortOrder:number){
+        setFilter([header, sortOrder])
     }
 
     let keys;
@@ -24,14 +24,14 @@ const Table: FC<iTableProps> = ({ data, setModalInfo }) => {
     if (Array.isArray(data)) {
         keys = Object.keys(data ? data[0] : ["NONE"])
     } else {
-        keys = Object.keys(data? data: ["NONE"])
+        keys = Object.keys(data ? data : ["NONE"])
     }
     return (
-        <div className="table-div">
+        <div className="flex justify-center mt-4 w-4/5">
             {data && (
-                <table>
-                    <THead keys={keys} addExpand={addExpand}></THead>
-                    <TBody setModalInfo={setModalInfo} data={data} removeExpand={removeExpand}></TBody>
+                <table className="table">
+                    <THead keys={keys} addExpand={addExpand} changeFilter={changeFilter}></THead>
+                    <TBody setModalInfo={setModalInfo} data={data} removeExpand={removeExpand} filterHeader={filter[0]} filterOrder={filter[1]}></TBody>
                 </table>
             )}
         </div>

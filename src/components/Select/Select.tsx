@@ -1,9 +1,8 @@
+import { iSelectProps } from "../../custom_typings/interfaces/props.interfaces";
 import { FC, useRef } from "react";
+import "./Select.css"
 
-interface iSelectProps {
-    changeData: (url: string) => void
-    setIsSelected: (val: boolean) => void
-}
+
 
 const Select: FC<iSelectProps> = ({ changeData, setIsSelected }) => {
 
@@ -18,17 +17,18 @@ const Select: FC<iSelectProps> = ({ changeData, setIsSelected }) => {
     }
 
     return (
-        <div className="bg-green-400 flex flex-col items-center">
-            <label htmlFor="selectedApi" className="text-2xl font-bold font-sans">
+        <div className="select-div">
+            <label htmlFor="selectedApi" className="label">
                 Please Select an API
             </label>
-            <h1>HOLA</h1>
-            <input type="url" placeholder={"https://jsonplaceholder.typicode.com/users"} id={"selectedApi"} ref={selectRef} onKeyUp={(e) => {
+            <input className="input-api" type="url" placeholder={"https://jsonplaceholder.typicode.com/users"} id={"selectedApi"} ref={selectRef} onKeyUp={(e) => {
                 if (e.key === "Enter") {
                     clickHandler()
                 }
             }} />
-            <button className="accept-button" onClick={clickHandler}>Accept</button>
+            <button className="select-button" onClick={clickHandler}>
+                Accept
+            </button>
         </div>
     );
 }

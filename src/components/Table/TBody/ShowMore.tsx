@@ -1,14 +1,8 @@
+import { iShowMoreProps } from "../../../custom_typings/interfaces/table.interfaces";
 import { FC } from "react";
-
-interface iCellData {
-    [key: string]: iCellData
-}
+import "../index.css"
 
 
-interface iShowMoreProps {
-    setModalInfo: (info: iCellData | string) => void
-    data: iCellData | string
-}
 
 const ShowMore: FC<iShowMoreProps> = ({ setModalInfo, data }) => {
 
@@ -25,10 +19,12 @@ const ShowMore: FC<iShowMoreProps> = ({ setModalInfo, data }) => {
     }
 
 
-    return <div className="showmore-div">
-        {notEmpty ? <button className="showmore-button"
-            onClick={() => setModalInfo(data)}>Show More</button>
-            : <strong className="nothing">-</strong>}
+    return <div className="flex justify-center *:font-sans h-10">
+        {notEmpty ?
+            <button className="show-more"
+                onClick={() => setModalInfo(data)}>Show More
+            </button>
+            : <strong className="text-2xl">-</strong>}
     </div>
 }
 

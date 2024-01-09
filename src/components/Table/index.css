@@ -1,0 +1,33 @@
+.extra-row-caption{
+    @apply text-lime-700 font-sans text-xl first-letter:uppercase
+}
+
+.head-row{
+    @apply border-b-2 border-b-lime-600  *:text-lime-500  *:cursor-pointer *:w-auto
+}
+
+.header{
+    @apply *:font-sans *:first-letter:uppercase flex justify-center items-center
+}
+
+.filter-image{
+    @apply  h-3 max-w-3 left-1 relative
+}
+
+.body-row{
+    @apply border-y border-y-lime-900 *:pr-1 *:font-sans *:text-center hover:bg-slate-400
+}
+
+.show-more{
+    @apply text-white text-sm bg-slate-900 px-1 my-1 rounded active:bg-slate-950 active:border active:border-white
+}
+
+.table{
+    @apply table-auto border-collapse border border-transparent bg-white rounded
+}
+
+.nested-cell{
+    @apply text-center font-sans text-sm w-full flex justify-center
+}
+
+

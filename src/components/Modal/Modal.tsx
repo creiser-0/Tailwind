@@ -1,13 +1,11 @@
+import { iModalProps } from "../../custom_typings/interfaces/props.interfaces";
 import { FC } from "react";
-import NestedCell from "./Table/TBody/NestedCell";
+import NestedCell from "../Table/TBody/NestedCell";
+import "./Modal.css"
 
 
-interface iModalProps {
-    modalInfo: any
-    setShowModal: (val: boolean) => void
-}
 
-const Modal: FC<iModalProps> = ({ modalInfo, setShowModal }) => {
+const Modal: FC<iModalProps> = ({ modalInfo, setShowModal, setModalInfo }) => {
 
     function clickHandler() {
         setShowModal(false)
@@ -18,7 +16,7 @@ const Modal: FC<iModalProps> = ({ modalInfo, setShowModal }) => {
             <div className="modal-content" onClick={(e)=>e.stopPropagation()}>
                 <button className="close-button"
                     onClick={clickHandler}>x</button>
-                {modalInfo && <NestedCell setModalInfo={() => { }} cell={modalInfo} />}
+                {modalInfo && <NestedCell setModalInfo={setModalInfo} cell={modalInfo} />}
             </div>
         </div>
     )

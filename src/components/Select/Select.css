@@ -1,0 +1,16 @@
+.select-div{
+    @apply bg-lime-500 flex flex-col items-center w-full
+}
+
+.label{
+    @apply text-2xl text-white font-sans mt-2
+}
+
+.input-api{
+    @apply m-2 font-sans placeholder:font-sans placeholder:text-gray-300 border-none rounded w-auto focus:outline-dashed
+}
+
+.select-button{
+    @apply bg-emerald-500 cursor-pointer font-sans hover:bg-emerald-800 border active:bg-emerald-900 border-black pl-1 pr-1  mb-2 
+    text-gray-700
+}

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Table from "./components/Table";
-import Modal from "./components/Modal";
-import Select from "./components/Select";
+import Modal from "./components/Modal/Modal";
+import Select from "./components/Select/Select";
+
 import "./style.css"
 
 export default function App() {
@@ -27,12 +28,12 @@ export default function App() {
     }
 
     return (
-        <main>
+        <main className="main">
             <Select changeData={changeData} setIsSelected={setIsSelected}></Select>
             {isSelected && <Table setModalInfo={setModalInfo} data={apiData}></Table>}
             {/* <Table setModalInfo={setModalInfo} data={apiData}></Table> */}
             {showModal && <Modal setShowModal={setShowModal}
-                modalInfo={info} />}
+                modalInfo={info} setModalInfo={setModalInfo} />}
         </main>
     );
 }

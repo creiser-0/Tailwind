@@ -17,16 +17,17 @@ interface iBodyRowProps {
     setModalInfo: (info: iCellData | string) => void
     setAddExpand: (val: boolean) => void
     removeExpand: () => void
+    style: string
 }
 
 
-const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeExpand , setAddExpand}) => {
+const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeExpand, setAddExpand, style }) => {
 
 
 
     const [canExpand, setCanExpand] = useState(true)
 
-    const isObject = (x: {}): boolean => {
+    const isObject = (x: any): boolean => {
         return (typeof (x) === "object")
     }
 
@@ -39,13 +40,12 @@ const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeEx
     useEffect(() => {
         keys.map((key) => {
             if (isObject(rowData[key] || Array.isArray(rowData[key]))) {
-                extraRowData.current = [...extraRowData.current, {content:rowData[key], key:key}]
+                extraRowData.current = [...extraRowData.current, { content: rowData[key], key: key }]
             } else {
                 extraRowData.current = [...extraRowData.current, 0]
             }
         })
-        if (extraRowData.current.every((x)=>x===0)){
-        /* if (extraRowData.current.length === 1) */
+        if (extraRowData.current.every((x) => x === 0)) {
             removeExpand()
             setAddExpand(false)
         }
@@ -64,7 +64,7 @@ const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeEx
 
     return (
         <>
-            <tr>
+            <tr className={style}>
                 {addExpand ? <Expand canExpand={canExpand} setCanExpand={setCanExpand} /> : <></>}
                 {cellsList}
             </tr>

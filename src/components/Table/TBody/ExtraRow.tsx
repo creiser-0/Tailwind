@@ -1,38 +1,31 @@
 import { FC } from "react"
+import { iExtraRowProps } from "../../../custom_typings/interfaces/table.interfaces"
 import NestedCell from "./NestedCell"
 
-interface iCellData {
-    [key: string]: iCellData
-}
-
-interface iExtraRowProps {
-    data: any[]
-    setModalInfo: (info: iCellData | string) => void
-}
 
 const ExtraRow: FC<iExtraRowProps> = ({ data, setModalInfo }) => {
 
-    const cellList = data.map((cellData: any, i) => {
+    const cellList = data.map((cellData, i) => {
         return (
-            // <td key={i} >
-            <div  key={i}>
+            <div key={i} className="flex flex-col items-center mr-3">
                 {(cellData !== 0) &&
                     <>
-                        <p>{cellData.key}</p>
+                        <p className="extra-row-caption">{cellData.key}</p>
                         <NestedCell setModalInfo={setModalInfo} cell={cellData.content} />
                     </>}
             </div>
-            // </td>
         )
     })
 
     return (
         <tr className="extra-row">
             <td></td>
-            <td colSpan={data.length-1}>
-                <div className="nested-div">{cellList}</div>
+            <td colSpan={data.length - 1}>
+                <div className="flex flex-row my-2 justify-between">
+                    {cellList}
+                </div>
             </td>
-            {/* {cellList} */}
+
         </tr>
     )
 }

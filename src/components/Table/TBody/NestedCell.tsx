@@ -1,22 +1,13 @@
+import { iNestedCellProps, iCellData } from "../../../custom_typings/interfaces/table.interfaces";
 import { FC } from "react";
 import Table from "..";
+import "../index.css"
 
 
-
-interface iCellData {
-    [key: string]: iCellData
-}
-
-interface iNestedCellProps {
-    cell: iCellData | string
-    setModalInfo: (info: iCellData | string) => void
-}
 
 const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
 
     function createCell(cellData: iCellData) {
-
-
 
         if (!cellData){
             return "NONE"
@@ -43,14 +34,14 @@ const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
         })
 
         return (
-            <table>
+            <table className="table w-full">
                 <thead>
-                    <tr>
+                    <tr className="head-row *:first-letter:uppercase">
                         {headersList}
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr className="body-row *:border-x">
                         {cellsList}
                     </tr>
                 </tbody>
@@ -59,7 +50,7 @@ const NestedCell: FC<iNestedCellProps> = ({cell,setModalInfo}) => {
     }
 
     return (
-        <div className="nested">
+        <div className="nested-cell">
             {(typeof cell !== "object") ? cell : createCell(cell)}
         </div>
     )
