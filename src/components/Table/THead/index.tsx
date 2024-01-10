@@ -1,27 +1,49 @@
+import { iData } from "../../../custom_typings/interfaces/table.interfaces";
 import { FC, useRef } from "react";
-import { iTHeadProps } from "../../../custom_typings/interfaces/table.interfaces";
-import Header from "./HeaderTable";
-import "../index.css"
+import HeaderTable from "./HeaderTable";
+import "../index.css";
 
+export interface iTHeadProps {
+  data: iData[] | iData;
+  addExpand: boolean;
+  changeFilter: (header: string, sortOrder: number) => void;
+  nestedKeys: string[];
+}
 
+const THead: FC<iTHeadProps> = ({ data, addExpand, changeFilter, nestedKeys }) => {
+  const currentHeader = useRef("");
 
-const THead: FC<iTHeadProps> = ({ keys, addExpand, changeFilter }) => {
+  function getKeys() {
+    if (Array.isArray(data)) {
+      return Object.keys(data ? data[0] : ["NONE"]);
+    } else {
+      return Object.keys(data ? data : ["NONE"]);
+    }
+  }
 
-    const currentHeader = useRef("")
+  const keys = getKeys();
 
-    const headerList = keys.map((key, i) => {
-        return (
-            <Header key={key} header={key} changeFilter={changeFilter} currentHeader={currentHeader}/>
-        )
-    })
+  const headerList = keys.map((key) => {
+    const hasFilter = (!nestedKeys.includes(key))
 
     return (
-        <thead>
-            <tr className="head-row">
-                {addExpand ? <th> </th> : <></>}
-                {headerList}
-            </tr>
-        </thead>
-    )
-}
-export default THead
+      <HeaderTable
+        key={key}
+        header={key}
+        changeFilter={changeFilter}
+        currentHeader={currentHeader}
+        hasFilter={hasFilter}
+      />
+    );
+  });
+
+  return (
+    <thead>
+      <tr className="head-row">
+        {addExpand ? <th> </th> : <></>}
+        {headerList}
+      </tr>
+    </thead>
+  );
+};
+export default THead;

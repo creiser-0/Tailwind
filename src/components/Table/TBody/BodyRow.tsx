@@ -1,76 +1,75 @@
+import {
+  iData,
+  iCellData,
+} from "../../../custom_typings/interfaces/table.interfaces";
 import { FC, useEffect, useRef, useState } from "react";
 import Expand from "./Expand";
 import ExtraRow from "./ExtraRow";
 import ShowMore from "./ShowMore";
 
-interface iData {
-    [key: string]: any
-}
-
-interface iCellData {
-    [key: string]: iCellData
-}
-
 interface iBodyRowProps {
-    rowData: iData
-    addExpand: boolean
-    setModalInfo: (info: iCellData | string) => void
-    setAddExpand: (val: boolean) => void
-    removeExpand: () => void
-    style: string
+  rowData: iData;
+  addExpand: boolean;
+  setModalInfo: (info: iCellData | string) => void;
+  setAddExpand: (val: boolean) => void;
+  removeExpand: () => void;
+  style: string;
+  nestedKeys: string[];
 }
 
+const BodyRow: FC<iBodyRowProps> = ({
+  rowData,
+  addExpand,
+  setModalInfo,
+  nestedKeys,
+  style,
+}) => {
+  const [canExpand, setCanExpand] = useState(true);
 
-const BodyRow: FC<iBodyRowProps> = ({ rowData, addExpand, setModalInfo, removeExpand, setAddExpand, style }) => {
+  const extraRowData = useRef<any[]>([]);
 
+  const keys = Object.keys(rowData);
 
+  const numberOfColumns = keys.length;
 
-    const [canExpand, setCanExpand] = useState(true)
+  useEffect(() => {
+    nestedKeys.map((key) => {
+      extraRowData.current = [
+        ...extraRowData.current,
+        { content: rowData[key], key: key },
+      ];
+    });
+  }, []);
 
-    const isObject = (x: any): boolean => {
-        return (typeof (x) === "object")
-    }
+  const cellsList = keys.map((key) => (
+    <td key={key}>
+      {nestedKeys.includes(key) ? (
+        <ShowMore setModalInfo={setModalInfo} data={rowData[key]} />
+      ) : (
+        String(rowData[key])
+      )}
+    </td>
+  ));
 
-    const extraRowData = useRef<any[]>([0])
+  return (
+    <>
+      <tr className={style}>
+        {addExpand ? (
+          <Expand canExpand={canExpand} setCanExpand={setCanExpand} />
+        ) : (
+          <></>
+        )}
+        {cellsList}
+      </tr>
+      {!canExpand && (
+        <ExtraRow
+          setModalInfo={setModalInfo}
+          data={extraRowData.current}
+          numberOfColumns={numberOfColumns}
+        />
+      )}
+    </>
+  );
+};
 
-    const keys = Object.keys(rowData)
-
-
-
-    useEffect(() => {
-        keys.map((key) => {
-            if (isObject(rowData[key] || Array.isArray(rowData[key]))) {
-                extraRowData.current = [...extraRowData.current, { content: rowData[key], key: key }]
-            } else {
-                extraRowData.current = [...extraRowData.current, 0]
-            }
-        })
-        if (extraRowData.current.every((x) => x === 0)) {
-            removeExpand()
-            setAddExpand(false)
-        }
-    }, [])
-
-
-
-    const cellsList = keys.map((key) =>
-        <td key={key}>
-            {(isObject(rowData[key]) || Array.isArray(rowData[key])) ?
-                (canExpand && <ShowMore setModalInfo={setModalInfo} data={rowData[key]} />)
-                : String(rowData[key])}
-        </td>
-    )
-
-
-    return (
-        <>
-            <tr className={style}>
-                {addExpand ? <Expand canExpand={canExpand} setCanExpand={setCanExpand} /> : <></>}
-                {cellsList}
-            </tr>
-            {!canExpand && <ExtraRow setModalInfo={setModalInfo} data={extraRowData.current} />}
-        </>
-    )
-}
-
-export default BodyRow
+export default BodyRow;
